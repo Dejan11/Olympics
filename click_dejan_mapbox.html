@@ -48,9 +48,9 @@ var map = new mapboxgl.Map({
 var popup = new mapboxgl.Popup({
     closeButton: false
 });
-var centroids = 'https://github.com/Dejan11/Olympics/blob/master/Olympics_centroids_upd.geojson';
-var polygons = 'https://github.com/Dejan11/Olympics/blob/master/Olympics_polygons_upd.geojson';
-var photo = 'https://github.com/Dejan11/Olympics/blob/master/rings.svg';
+var centroids = 'https://raw.githubusercontent.com/Dejan11/Olympics/master/Olympics_centroids_upd.geojson';
+var polygons = 'https://raw.githubusercontent.com/Dejan11/Olympics/blob/master/Olympics_polygons_upd.geojson';
+var photo = 'https://raw.githubusercontent.com/Dejan11/Olympics/blob/master/rings.svg';
 map.on('load', function () {
     map.addSource("states", {
         "type": "geojson",
