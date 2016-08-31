@@ -47,15 +47,18 @@ var map = new mapboxgl.Map({
 });
 var popup = new mapboxgl.Popup({
     closeButton: false
-});	
+});
+var centroids = 'https://github.com/Dejan11/Olympics/blob/master/Olympics_centroids_upd.geojson';
+var polygons = 'https://github.com/Dejan11/Olympics/blob/master/Olympics_polygons_upd.geojson';
+var photo = 'https://github.com/Dejan11/Olympics/blob/master/rings.svg';
 map.on('load', function () {
     map.addSource("states", {
         "type": "geojson",
-        "data": "Olympics_polygons_upd.geojson"
+        "data": polygons
     });
     map.addSource('origins', {
       "type": "geojson",
-      "data": "Olympics_centroids_upd.geojson"
+      "data": centroids
     });
     map.addLayer({
         "id": "centroids",
@@ -177,7 +180,7 @@ map.on('load', function () {
     							'<div><h2> Population: ' + props.pop_wb + '</h2></div>' +
     							'<div><h2> GDP: ' + props.gdp + '</h2></div>' +
     							'<div><h2> Total medals: ' + props.total + '</h2></div>' +
-								'<div><img src= "rings.svg" width="200px"/></div>'+
+								'<div><img src= photo width="200px"/></div>'+
 								'<div><h3> Author: D. Popovic </h3></div>' ;
     		    }  else {
     					map.setFilter('route-hover', ["==", "admin", ""]);
