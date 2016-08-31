@@ -43,10 +43,13 @@ var overlay = document.getElementById('map-overlay');
 var popup = new mapboxgl.Popup({
     closeButton: false
 });
+var centroids = 'https://cdn.rawgit.com/Dejan11/Olympics/master/Olympics_centroids_upd.geojson';
+var polygons = 'https://cdn.rawgit.com/Dejan11/Olympics/master/Olympics_polygons_upd.geojson';
+var photo = 'https://cdn.rawgit.com/Dejan11/Olympics/master/rings.svg';
 map.on('load', function () {
     map.addSource("states", {
         "type": "geojson",
-        "data": "Olympics_polygons_upd.geojson"
+        "data": polygons
     });
 
     map.addLayer({
