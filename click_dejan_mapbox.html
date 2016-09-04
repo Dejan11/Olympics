@@ -48,9 +48,12 @@ var map = new mapboxgl.Map({
 var popup = new mapboxgl.Popup({
     closeButton: false
 });
-var centroids = 'https://cdn.rawgit.com/Dejan11/Olympics/master/Olympics_centroids_upd.geojson';
-var polygons = 'https://cdn.rawgit.com/Dejan11/Olympics/master/Olympics_polygons_upd.geojson';
+var centroids = 'https://cdn.rawgit.com/Dejan11/Olympics/master/Olympics_centroids_final1.geojson';
+var polygons = 'https://cdn.rawgit.com/Dejan11/Olympics/master/Olympics_polygons_final1.geojson';
 var photo = 'https://cdn.rawgit.com/Dejan11/Olympics/master/rings.svg';
+var gold = 'https://cdn.rawgit.com/Dejan11/Olympics/master/gold.png';
+var silver = 'https://cdn.rawgit.com/Dejan11/Olympics/master/silver.png';
+var bronze = 'https://cdn.rawgit.com/Dejan11/Olympics/master/bronze.png';
 map.on('load', function () {
     map.addSource("states", {
         "type": "geojson",
@@ -176,10 +179,11 @@ map.on('load', function () {
     					var props = features[0].properties;
     					map.setFilter('route-hover', ["==", "admin", props.admin]);
     					document.getElementById('panel').innerHTML =
-    							'<div><h1>' + props.admin + '</h1></div>' + '<hr>' +
-    							'<div><h2> Population: ' + props.pop_wb + '</h2></div>' +
-    							'<div><h2> GDP: ' + props.gdp + '</h2></div>' +
-    							'<div><h2> Total medals: ' + props.total + '</h2></div>' +
+    							'<div><h1>' + props.admin + '<br>IO rank: '+ props.rank.replace(null, "-")+'</br></h1></div>' + '<hr>' +
+    							'<div><h2> Population: ' + (props.population/1000000).toFixed(2) + ' m</h2></div>' +
+    							'<div><h2> GDP(PPP): $ ' + props.gdp_ppp + '</h2></div>' +
+    							'<div><h2><font size="4.5"> Medals: ' +props.total+'  Athletes: ' + props.Athletes + '</font></h2></div>' +
+								'<div><p align= "middle"> <img src= gold width="35px" align = "middle"/><font color="gold">'+ props.gold +'<img  align = "middle" src= silver width="28px"/></font><font color="silver">'+ props.silver +'<img  align = "middle" src= bronze width="22px"/></font><font color="#CD7F32">' + props.bronze+'</font></p></div>' +
 								'<div><img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Olympic_Rings.svg/1280px-Olympic_Rings.svg.png" width="200px"/></div>'+
 								'<div><h3> Author: D. Popovic </h3></div>' ;
     		    }  else {
